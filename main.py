@@ -83,7 +83,7 @@ def create_file():
 def read_file():
     try:
         read_folder()                                                           # providing the files and folders name
-        name = input("Enter the name of file that you want to Read : ")         # taking folder name input from user for rename the preexisting file
+        name = input("Enter the name of file that you want to Read : ")         # taking file name input from user for rename the preexisting file
         p = Path(name)                                                          # store path of it in a variable
         if p.exists() and p.is_file():                                          # checking the condition that the inputed folder name is exist or not
             with open(name,'r') as file:                                        # creating file as in read mode
@@ -94,22 +94,22 @@ def read_file():
 
 def update__file():
     try:
-        read_folder()
-        name = input("Enter the name of file that you want to Read : ")
-        p = Path(name)
-        if p.exists() and p.is_file():
-            print("1. Rename the file\n2. Append in file\n3. Overwrite in file")
-            opt = int(input("Enter : "))
-            if opt == 1 :
+        read_folder()                                                            # providing the files and folders name
+        name = input("Enter the name of file that you want to Read : ")          # taking the input from user of file name
+        p = Path(name)                                                           # stores its path in a varible
+        if p.exists() and p.is_file():                                           #checking their existance
+            print("1. Rename the file\n2. Append in file\n3. Overwrite in file") #giving options related to updation of file
+            opt = int(input("Enter : "))                                         
+            if opt == 1 :                                                        #option related to rename of file
                 new_name = input("Enter the new name : ")
                 p.rename(new_name)
                 print("Name of file successfully changed.")
-            if opt == 2 :
+            if opt == 2 :                                                        #option related to append in file
                 with open(name,'a') as file:
                     data = input("Enter the data that append to file : ")
                     file.write(" "+data)
                     print("Append operation is succesfully done.")
-            if opt == 3 :
+            if opt == 3 :                                                         #option related to overwrite in file
                 with open(name,'w') as file:
                     data = input("Enter the data that overwrite to file : ")
                     file.write(data)
