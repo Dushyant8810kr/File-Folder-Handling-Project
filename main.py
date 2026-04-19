@@ -118,6 +118,20 @@ def update__file():
     except Exception as err:
         print(f"Error as {err}")
 
+        
+def delete_file():
+    try:
+        read_folder()
+        name = input("Enter file name that you want to delete : ")
+        p = Path(name)
+        if p.exists() and p.is_file():
+            p.unlink()                                                          # unlink() : this is use for deleting purpose 
+            print("your file is successfully Deleted")
+        else:
+            print("your file does not exist!!")
+    except Exception as err:
+        print(f"Error as {err}")
+
 
 
 
@@ -143,6 +157,9 @@ if option==6:
 
 if option==7:
     update__file()
+
+if option==8:
+    delete_file()
 
 
 
