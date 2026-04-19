@@ -1,14 +1,18 @@
 from pathlib import Path
 import os
+import shutil
 
-print("Options : ")
-print("1. Create a folder.")
-print("2. Read files and folders.")
-print("3. Update the folder.")
-print("4. Delte te folder.")
-print("5. create a file.")
-print("6. read a file.")
-print("7. Update a file.")
+def show_options():
+    print("\njOptions : ")
+    print("1. Create a folder.")
+    print("2. Read files and folders.")
+    print("3. Update the folder.")
+    print("4. Delte te folder.")
+    print("5. create a file.")
+    print("6. read a file.")
+    print("7. Update a file.")
+    print("8. delete a file.")
+    print("9. Exit.")
 
 
 option = int(input("Choose an option : "))
@@ -52,8 +56,8 @@ def delete_folder():
         name = input("Enter the name of folder that you want to delete : ")     # taking folder name input from user for rename the preexisting file
         p = Path(name)                                                          # store path of it in a variable
         if p.exists() and p.is_dir():                                           # checking the condition that the inputed folder name is exist or not
-            p.rmdir()                                                           # rmdir() is used for deleting the path  
-            print("Your file succesfully deleted.")
+            shutil.rmtree(p)   # deletes non-empty folder                       p.rmdr(name)# rmdir() is used for deleting the path  
+            print("Your folder succesfully deleted.")
         else:
             print("your file doesnot exist!!")
     except Exception as err:
@@ -136,30 +140,36 @@ def delete_file():
 
 
 
+while True:
+    if option==1:
+        create_folder()
 
-if option==1:
-    create_folder()
+    elif option==2:
+        read_folder()
 
-if option==2:
-    read_folder()
+    elif option==3:
+        update_folder()
 
-if option==3:
-    update_folder()
+    elif option ==4:
+        delete_folder()
 
-if option ==4:
-    delete_folder()
+    elif option==5:
+        create_file()
 
-if option==5:
-    create_file()
+    elif option==6:
+        read_file()
 
-if option==6:
-    read_file()
+    elif option==7:
+        update__file()
 
-if option==7:
-    update__file()
-
-if option==8:
-    delete_file()
+    elif option==8:
+        delete_file()
+    
+    elif option==9:
+        print("Exiting...")
+        break
+    else:
+        print("invalid option")
 
 
 
